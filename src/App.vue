@@ -1,12 +1,22 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+    <div id="app">
+        <div id="nav">
+            <top-header></top-header>
+        </div>
+        <router-view/>
     </div>
-    <router-view/>
-  </div>
 </template>
+
+<script>
+import TopHeader from "@/components/TopHeader.vue"
+
+export default {
+    name: "App",
+    components: {
+        TopHeader
+    }
+}  
+</script>
 
 <style>
 #app {
@@ -27,6 +37,6 @@
 }
 
 #nav a.router-link-exact-active {
-  color: #42b983;
+  color: white;
 }
 </style>

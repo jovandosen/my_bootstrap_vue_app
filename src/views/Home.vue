@@ -1,18 +1,23 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+    <b-container>
+        <b-row align-v="center">
+            <job-card></job-card>
+            <job-card></job-card>
+            <job-card></job-card>
+            <job-card></job-card>
+            <job-card></job-card>
+            <job-card></job-card>
+        </b-row>
+    </b-container>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import JobCard from '@/components/JobCard.vue'
 
 export default {
-  name: 'Home',
-  components: {
-    HelloWorld
-  }
+    name: 'Home',
+    components: {
+        JobCard
+    }
 }
 </script>
