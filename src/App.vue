@@ -3,6 +3,9 @@
         <div class="page" v-if="showSpinner">
             <b-spinner class="spinner" variant="primary" key="primary"></b-spinner>
         </div>
+        <div class="page" v-if="postSpinner">
+            <b-spinner class="spinner" variant="primary" key="primary"></b-spinner>
+        </div>
         <div id="nav">
             <top-header></top-header>
         </div>
@@ -20,7 +23,7 @@ export default {
         TopHeader
     },
     computed: {
-        ...mapGetters(["showSpinner"])
+        ...mapGetters(["showSpinner", "postSpinner"])
     }
 }  
 </script>
