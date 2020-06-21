@@ -1,7 +1,12 @@
 <template>
     <b-container>
         <b-row align-v="center">
-            <job-card v-for="job in displayJobs" v-bind:key="job.id" v-bind:name="job.name"></job-card>
+            <job-card 
+                v-for="job in displayJobs" 
+                v-bind:key="job.id" 
+                v-bind:name="job.name"
+                v-bind:id="job.id"
+            ></job-card>
         </b-row>
         <b-pagination
             v-model="currentPage"

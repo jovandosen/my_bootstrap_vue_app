@@ -7,7 +7,8 @@ export default new Vuex.Store({
     state: {
         jobs: [],
         displayJobs: [],
-        rows: 0
+        rows: 0,
+        showSpinner: false
     },
     mutations: {
         SET_JOBS(state, jobs) {
@@ -18,15 +19,20 @@ export default new Vuex.Store({
         },
         SET_DISPLAY_JOBS(state, displayJobs) {
             state.displayJobs = displayJobs
+        },
+        SET_SPINNER(state, spinner) {
+            state.showSpinner = spinner
         }
     },
     actions: {
-        async fetchData() {
+        async fetchData({ commit }) {
+            commit("SET_SPINNER", true)
             return new Promise(respolve => {
                 setTimeout(async () => {
                     const res = await fetch("jobs.json")
                     const val = await res.json()
                     respolve(val)
+                    commit("SET_SPINNER", false)
                 }, 1000)
             })
         },
@@ -42,6 +48,16 @@ export default new Vuex.Store({
             const start = (currentPage - 1) * perPage
             const jobs = state.jobs.slice(start, start + 3)
             commit("SET_DISPLAY_JOBS", jobs)
+        },
+        updatePagination({ commit, dispatch }, { myJson, currentPage, perPage }) {
+            commit("SET_JOBS", myJson)
+            commit("SET_ROWS", myJson.length)
+            dispatch("paginate", { currentPage, perPage })
+        },
+        async search({ dispatch }, { text }) {
+            const myJson = await this.dispatch("fetchData")
+            const values = myJson.filter(val => val.name.toLowerCase().includes(text.toLowerCase()))
+            dispatch("updatePagination", { myJson: values, currentPage: 1, perPage: 3 })
         }
     },    
     getters: {
@@ -53,6 +69,9 @@ export default new Vuex.Store({
         },
         displayJobs(state) {
             return state.displayJobs
+        },
+        showSpinner(state) {
+            return state.showSpinner
         }
     },    
     modules: {

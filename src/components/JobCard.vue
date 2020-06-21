@@ -19,7 +19,10 @@
                     cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
                     proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                 </b-card-text>
-                <b-button variant="primary">Apply</b-button>
+                <b-button v-b-modal="modalId" variant="primary" v-b-tooltip.hover title="Apply Here">Apply</b-button>
+                <b-modal :id="modalId" title="Apply here info">
+                    <p class="my-4">Hello from modal!</p>
+                </b-modal>
             </b-card>
         </b-col>
     </div>
@@ -28,7 +31,12 @@
 <script>
 export default {
     name: "JobCard",
-    props: ["name"]
+    props: ["name", "id"],
+    computed: {
+        modalId() {
+            return `modal-${this.id}`
+        }
+    }
 }    
 </script>
 
