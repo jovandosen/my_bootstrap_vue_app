@@ -1,6 +1,6 @@
 <template>
-    <b-container>
-        <b-row>
+    <b-container fluid>
+        <b-row class="rowStyle">
             <post-card 
                 v-for="post in posts" 
                 v-bind:key="post.id" 
@@ -32,5 +32,7 @@ export default {
 </script>
 
 <style scoped>
-           
+.rowStyle {
+    margin-left: 6%;
+}           
 </style>       
