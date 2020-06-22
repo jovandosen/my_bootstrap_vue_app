@@ -22,6 +22,12 @@ Vue.use(VueRouter)
         path: '/posts',
         name: 'Posts',
         component: () => import(/* webpackChunkName: "posts" */ '../views/Posts.vue')
+    },
+    {
+        path: '/post/:id',
+        name: 'PostDetails',
+        props: true,
+        component: () => import(/* webpackChunkName: "post" */ '../views/Post.vue')
     }
 ]
 

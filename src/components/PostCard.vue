@@ -13,7 +13,7 @@
             <b-card-text>
                 {{ post.body | cut_data }}
             </b-card-text>
-            <b-button href="#" variant="primary">Read more</b-button>
+            <b-link :to="{ name: 'PostDetails', params: { id: post.id } }">Read more</b-link>
         </b-card>
     </b-col>
 </template>
