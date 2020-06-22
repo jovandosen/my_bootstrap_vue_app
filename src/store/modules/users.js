@@ -3,7 +3,8 @@ import axios from 'axios'
 const state = {
     users: [],
     userRows: 0,
-    displayUsers: []
+    displayUsers: [],
+    userSpinner: false
 }
 const getters = {
     users(state) {
@@ -14,16 +15,21 @@ const getters = {
     },
     displayUsers(state) {
         return state.displayUsers
+    },
+    userSpinner(state) {
+        return state.userSpinner
     }
 }
 const actions = {
     async getUsers({ commit }, details) {
+        commit("setUserSpinner", true)
         const response = await axios.get('https://jsonplaceholder.typicode.com/users')
         commit("setUsers", response.data)
         commit("setUserRows", response.data.length)
         const start = (details.currentPage - 1) * details.perPage
         const end = (start + details.perPage)
         commit("setDisplayUsers", response.data.slice(start, end))
+        commit("setUserSpinner", false)
     }
 }
 const mutations = {
@@ -35,6 +41,9 @@ const mutations = {
     },
     setDisplayUsers(state, users) {
         state.displayUsers = users
+    },
+    setUserSpinner(state, spinner) {
+        state.userSpinner = spinner
     }
 }
 
