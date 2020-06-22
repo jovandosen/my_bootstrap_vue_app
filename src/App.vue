@@ -9,18 +9,23 @@
         <div id="nav">
             <top-header></top-header>
         </div>
+        <div id="go-back-button-box">
+            <GoBackButton/>
+        </div>
         <router-view/>
     </div>
 </template>
 
 <script>
 import TopHeader from "@/components/TopHeader.vue"
+import GoBackButton from '@/components/GoBackButton.vue'
 import { mapGetters } from 'vuex'
 
 export default {
     name: "App",
     components: {
-        TopHeader
+        TopHeader,
+        GoBackButton
     },
     computed: {
         ...mapGetters(["showSpinner", "postSpinner"])
@@ -61,5 +66,9 @@ export default {
 .spinner {
     position: relative;
     top: 50%;
+}
+#go-back-button-box {
+    margin-left: 110px;
+    margin-bottom: 10px;
 }
 </style>
