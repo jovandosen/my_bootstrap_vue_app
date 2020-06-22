@@ -2,7 +2,7 @@
     <b-container fluid>
         <b-row class="rowStyle">
             <post-card 
-                v-for="post in posts" 
+                v-for="post in displayPosts" 
                 v-bind:key="post.id" 
                 v-bind:post="post"
             ></post-card>
@@ -31,7 +31,7 @@ import PostCard from '@/components/PostCard.vue'
 export default {
     name: 'Posts',
     computed: {
-        ...mapGetters(["posts", "postRows"])    
+        ...mapGetters(["posts", "postRows", "displayPosts"])    
     },
     data() {
         return {
@@ -42,11 +42,11 @@ export default {
     methods: {
         ...mapActions(["getPosts"]),
         paginate(currentPage) {
-            console.log(currentPage)
+            this.$store.dispatch("getPosts", { currentPage: currentPage, perPage: this.perPage })
         }
     },
     mounted() {
-        this.getPosts()
+        this.getPosts({ currentPage: this.currentPage, perPage: this.perPage })
     },
     components: {
         PostCard
