@@ -13,7 +13,7 @@
             <b-card-text>
                 {{ user.email }}
             </b-card-text>
-            <b-link>Read more</b-link>
+            <b-link :to="{ name: 'UserDetails', params: { id: user.id } }">Read more</b-link>
         </b-card>
     </b-col>
 </template>

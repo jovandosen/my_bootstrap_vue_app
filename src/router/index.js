@@ -33,6 +33,12 @@ Vue.use(VueRouter)
         path: '/users',
         name: 'Users',
         component: () => import(/* webpackChunkName: "users" */ '../views/Users.vue')
+    },
+    {
+        path: '/user/:id',
+        name: 'UserDetails',
+        props: true,
+        component: () => import(/* webpackChunkName: "user" */ '../views/User.vue')
     }
 ]
 
