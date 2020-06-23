@@ -4,6 +4,8 @@
             <b-col>
                 <h1>{{ post.title }}</h1>
                 <p>{{ post.body }}</p>
+                <router-link :to="{ name: 'PostComments', params: { id: this.id } }">view comments</router-link>
+                <router-view :key="$route.path"></router-view>
             </b-col>
         </b-row>
     </b-container>
