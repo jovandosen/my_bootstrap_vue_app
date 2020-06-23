@@ -74,6 +74,11 @@ Vue.use(VueRouter)
             title: 'Comment'
         },
         component: () => import(/* webpackChunkName: "comment" */ '../views/Comment.vue')
+    },
+    {
+        path: '*',
+        name: 'NotFound',
+        component: () => import(/* webpackChunkName: "notFound" */ '../views/NotFound.vue')
     }
 ]
 
