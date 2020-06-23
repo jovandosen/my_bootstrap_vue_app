@@ -9,6 +9,9 @@
         <div class="page" v-if="userSpinner">
             <b-spinner class="spinner" variant="primary" key="primary"></b-spinner>
         </div>
+        <div class="page" v-if="commentSpinner">
+            <b-spinner class="spinner" variant="primary" key="primary"></b-spinner>
+        </div>
         <div id="nav">
             <top-header></top-header>
         </div>
@@ -31,7 +34,7 @@ export default {
         GoBackButton
     },
     computed: {
-        ...mapGetters(["showSpinner", "postSpinner", "userSpinner"])
+        ...mapGetters(["showSpinner", "postSpinner", "userSpinner", "commentSpinner"])
     }
 }  
 </script>
