@@ -22,14 +22,28 @@ const getters = {
 }
 const actions = {
     async getUsers({ commit }, details) {
-        commit("setUserSpinner", true)
+        axios.interceptors.request.use((config) => {
+            // Do something before request is sent
+            commit("setUserSpinner", true)
+            return config;
+        }, (error) => {
+            // Do something with request error
+            return Promise.reject(error);
+        });
+        axios.interceptors.response.use((response) => {
+            // Do something with response data
+            commit("setUserSpinner", false)
+            return response;
+        }, (error) => {
+            // Do something with response error
+            return Promise.reject(error);
+        });
         const response = await axios.get('https://jsonplaceholder.typicode.com/users')
         commit("setUsers", response.data)
         commit("setUserRows", response.data.length)
         const start = (details.currentPage - 1) * details.perPage
         const end = (start + details.perPage)
         commit("setDisplayUsers", response.data.slice(start, end))
-        commit("setUserSpinner", false)
     }
 }
 const mutations = {

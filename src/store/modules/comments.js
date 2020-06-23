@@ -30,6 +30,14 @@ const actions = {
             // Do something with request error
             return Promise.reject(error);
         });
+        axios.interceptors.response.use((response) => {
+            // Do something with response data
+            commit("setCommentSpinner", false)
+            return response;
+        }, (error) => {
+            // Do something with response error
+            return Promise.reject(error);
+        });
         await axios.get('https://jsonplaceholder.typicode.com/comments')
                     .then(function(response){
                         commit("setComments", response.data)
@@ -37,7 +45,6 @@ const actions = {
                         const start = (details.currentPage - 1) * details.perPage
                         const end = (start + details.perPage)
                         commit("setDisplayComments", response.data.slice(start, end))
-                        commit("setCommentSpinner", false)
                     })
                     .catch(error => console.log(error))
     }
