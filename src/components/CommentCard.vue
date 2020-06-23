@@ -8,7 +8,7 @@
             <b-card-text>
                 {{ comment.body | cut_comment_body }}
             </b-card-text>
-            <b-link>Read more</b-link>
+            <b-link :to="{ name: 'CommentDetails', params: { id: comment.id } }">Read more</b-link>
         </b-card>
     </b-col>
 </template>

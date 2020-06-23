@@ -44,6 +44,12 @@ Vue.use(VueRouter)
         path: '/comments',
         name: 'Comments',
         component: () => import(/* webpackChunkName: "comments" */ '../views/Comments.vue')
+    },
+    {
+        path: '/comment/:id',
+        name: 'CommentDetails',
+        props: true,
+        component: () => import(/* webpackChunkName: "comment" */ '../views/Comment.vue')
     }
 ]
 
