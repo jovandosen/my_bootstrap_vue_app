@@ -46,6 +46,8 @@
                     <b-card-text>
                         <strong>Catch Phrase:</strong> {{ company.catchPhrase }}
                     </b-card-text>
+                    <router-link :to="{ name: 'UserPosts', params: { id: this.id } }">view posts</router-link>
+                    <router-view></router-view>
                 </b-card>
             </b-col>
         </b-row>

@@ -67,7 +67,18 @@ Vue.use(VueRouter)
         meta: {
             title: 'User'
         },
-        component: () => import(/* webpackChunkName: "user" */ '../views/User.vue')
+        component: () => import(/* webpackChunkName: "user" */ '../views/User.vue'),
+        children: [
+            {
+                path: 'posts',
+                name: 'UserPosts',
+                props: true,
+                meta: {
+                    title: 'User Posts'
+                },
+                component: () => import(/* webpackChunkName: "userPosts" */ '../views/UserPosts.vue')
+            }
+        ]
     },
     {
         path: '/comments',
