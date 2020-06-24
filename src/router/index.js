@@ -132,6 +132,15 @@ Vue.use(VueRouter)
         component: () => import(/* webpackChunkName: "photos" */ '../views/Photos.vue')
     },
     {
+        path: '/photo/:id',
+        name: 'PhotoDetails',
+        props: true,
+        meta: {
+            title: 'Photo'
+        },
+        component: () => import(/* webpackChunkName: "photo" */ '../views/Photo.vue')
+    },
+    {
         path: '*',
         name: 'NotFound',
         component: () => import(/* webpackChunkName: "notFound" */ '../views/NotFound.vue')
