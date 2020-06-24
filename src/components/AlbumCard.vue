@@ -9,6 +9,7 @@
             <b-card-text>
                 Album description text
             </b-card-text>
+            <b-link :to="{ name: 'AlbumDetails', params: { id: album.id } }">Read more</b-link>
         </b-card>
     </b-col>
 </template>

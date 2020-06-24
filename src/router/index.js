@@ -115,6 +115,15 @@ Vue.use(VueRouter)
         component: () => import(/* webpackChunkName: "albums" */ '../views/Albums.vue')
     },
     {
+        path: '/album/:id',
+        name: 'AlbumDetails',
+        props: true,
+        meta: {
+            title: 'Album'
+        },
+        component: () => import(/* webpackChunkName: "album" */ '../views/Album.vue')
+    },
+    {
         path: '*',
         name: 'NotFound',
         component: () => import(/* webpackChunkName: "notFound" */ '../views/NotFound.vue')

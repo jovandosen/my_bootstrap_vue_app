@@ -2,7 +2,7 @@
     <div id="user-albums-box">
         <h3>Album List</h3>
         <b-card-text v-for="album in allAlbums" v-bind:key="album.id">
-            {{ album.title }}
+            <b-link :to="{ name: 'AlbumDetails', params: { id: album.id } }">{{ album.title }}</b-link>
         </b-card-text>
     </div>
 </template>
@@ -36,6 +36,5 @@ export default {
     position: absolute;
     top: 100px;
     right: 650px;
-    color: saddlebrown;
 }    
 </style>
