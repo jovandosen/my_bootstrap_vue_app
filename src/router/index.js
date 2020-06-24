@@ -121,7 +121,18 @@ Vue.use(VueRouter)
         meta: {
             title: 'Album'
         },
-        component: () => import(/* webpackChunkName: "album" */ '../views/Album.vue')
+        component: () => import(/* webpackChunkName: "album" */ '../views/Album.vue'),
+        children: [
+            {
+                path: 'photos',
+                name: 'AlbumPhotos',
+                props: true,
+                meta: {
+                    title: 'Album Photos'
+                },
+                component: () => import(/* webpackChunkName: "albumPhotos" */ '../views/AlbumPhotos.vue')
+            }
+        ]
     },
     {
         path: '/photos',

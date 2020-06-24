@@ -3,6 +3,8 @@
         <b-row>
             <b-col>
                 <h1>{{ album.title }}</h1>
+                <router-link :to="{ name: 'AlbumPhotos', params: { id: this.id } }">view photos</router-link>
+                <router-view></router-view>
             </b-col>
         </b-row>
     </b-container>
