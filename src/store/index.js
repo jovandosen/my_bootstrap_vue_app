@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 import posts from './modules/posts.js'
 import users from './modules/users.js'
 import comments from './modules/comments.js'
+import albums from './modules/albums.js'
 
 Vue.use(Vuex)
 
@@ -80,6 +81,7 @@ export default new Vuex.Store({
     modules: {
         posts,
         users,
-        comments
+        comments,
+        albums
     }
 })
