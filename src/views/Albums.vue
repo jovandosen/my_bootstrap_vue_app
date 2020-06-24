@@ -7,7 +7,7 @@
                 v-bind:album="album"
             ></album-card>
         </b-row>
-        <b-row>
+        <b-row class="pagination-box">
             <b-col>
                 <b-pagination
                     v-model="currentPage"
@@ -42,11 +42,11 @@ export default {
     methods: {
         ...mapActions(["getAlbums"]),
         paginate(currentPage) {
-            console.log(currentPage)
+            this.$store.dispatch("getAlbums", { currentPage: currentPage, perPage: this.perPage })
         }
     },
     mounted() {
-        this.getAlbums()
+        this.getAlbums({ currentPage: this.currentPage, perPage: this.perPage })
     },
     components: {
         AlbumCard
@@ -58,5 +58,8 @@ export default {
 .comments-container {
     padding-left: 125px;
     padding-right: 125px;
-}      
+}   
+.pagination-box {
+    margin-top: 30px;
+}   
 </style>
