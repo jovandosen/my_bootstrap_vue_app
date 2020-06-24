@@ -4,6 +4,7 @@ import posts from './modules/posts.js'
 import users from './modules/users.js'
 import comments from './modules/comments.js'
 import albums from './modules/albums.js'
+import photos from './modules/photos.js'
 
 Vue.use(Vuex)
 
@@ -82,6 +83,7 @@ export default new Vuex.Store({
         posts,
         users,
         comments,
-        albums
+        albums,
+        photos
     }
 })

@@ -11,6 +11,7 @@
                     <b-nav-item :to="{name: 'Users'}">Users</b-nav-item>
                     <b-nav-item :to="{name: 'Comments'}">Comments</b-nav-item>
                     <b-nav-item :to="{name: 'Albums'}">Albums</b-nav-item>
+                    <b-nav-item :to="{name: 'Photos'}">Photos</b-nav-item>
                 </b-navbar-nav>
                 <!-- Right aligned nav items -->
                 <b-navbar-nav class="ml-auto">
