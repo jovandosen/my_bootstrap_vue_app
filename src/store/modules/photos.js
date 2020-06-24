@@ -3,7 +3,8 @@ import axios from 'axios'
 const state = {
     photos: [],
     photoRows: 0,
-    displayPhotos: []
+    displayPhotos: [],
+    photoSpinner: false
 }
 const getters = {
     photos(state) {
@@ -14,10 +15,29 @@ const getters = {
     },
     displayPhotos(state) {
         return state.displayPhotos
+    },
+    photoSpinner(state) {
+        return state.photoSpinner
     }
 }
 const actions = {
     async getPhotos({ commit }, details) {
+        axios.interceptors.request.use((config) => {
+            // Do something before request is sent
+            commit("setPhotoSpinner", true)
+            return config;
+        }, (error) => {
+            // Do something with request error
+            return Promise.reject(error);
+        });
+        axios.interceptors.response.use((response) => {
+            // Do something with response data
+            commit("setPhotoSpinner", false)
+            return response;
+        }, (error) => {
+            // Do something with response error
+            return Promise.reject(error);
+        });
         await axios.get('https://jsonplaceholder.typicode.com/photos')
                     .then(function(response){
                         commit("setPhotos", response.data)
@@ -38,6 +58,9 @@ const mutations = {
     },
     setDisplayPhotos(state, photos) {
         state.displayPhotos = photos
+    },
+    setPhotoSpinner(state, spinner) {
+        state.photoSpinner = spinner
     }
 }
 
