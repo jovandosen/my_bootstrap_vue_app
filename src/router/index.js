@@ -77,6 +77,15 @@ Vue.use(VueRouter)
                     title: 'User Posts'
                 },
                 component: () => import(/* webpackChunkName: "userPosts" */ '../views/UserPosts.vue')
+            },
+            {
+                path: 'albums',
+                name: 'UserAlbums',
+                props: true,
+                meta: {
+                    title: 'User Albums'
+                },
+                component: () => import(/* webpackChunkName: "userAlbums" */ '../views/UserAlbums.vue')
             }
         ]
     },
